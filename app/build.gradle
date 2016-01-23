@@ -31,4 +31,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.google.android.gms:play-services:8.4.0'
     compile project(path: ':jokeserver', configuration: 'android-endpoints')
+    //Tests
+    testCompile 'junit:junit:4.12'
 }
