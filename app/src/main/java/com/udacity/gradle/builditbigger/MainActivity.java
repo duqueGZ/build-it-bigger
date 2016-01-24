@@ -39,7 +39,7 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void tellJoke(View view){
+    public void tellJoke() {
         Toast.makeText(this, R.string.querying_joke_server, Toast.LENGTH_LONG).show();
 
         //GCE async task
