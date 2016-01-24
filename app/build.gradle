@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "22.0.1"
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "com.udacity.gradle.builditbigger"
@@ -10,8 +10,6 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
-        // Enabling multidex support.
-        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -19,17 +17,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        free {
+            applicationId "com.udacity.gradle.builditbigger.free"
+        }
+        paid {
+            applicationId "com.udacity.gradle.builditbigger.paid"
+        }
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    // Added for AdMob
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    // Added for AdMob (only free flavor)
+    freeCompile 'com.google.android.gms:play-services-ads:8.4.0'
     // jokeprovider library
     compile project(':jokeprovider')
     // JokeDisplay Android library
     compile project(':jokedisplay')
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.google.android.gms:play-services:8.4.0'
+    // JokeServer GCE endpoint
     compile project(path: ':jokeserver', configuration: 'android-endpoints')
     //Tests
     testCompile 'junit:junit:4.12'
