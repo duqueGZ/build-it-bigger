@@ -17,3 +17,10 @@ allprojects {
         jcenter()
     }
 }
+
+task testToLocalServer (dependsOn: ":jokeserver:appengineRun") {
+    project(":jokeserver").afterEvaluate { backend ->
+        backend.extensions.appengine.daemon = true
+    }
+}
+testToLocalServer.finalizedBy ":app:check", ":app:connectedCheck", ":jokeserver:appengineStop"

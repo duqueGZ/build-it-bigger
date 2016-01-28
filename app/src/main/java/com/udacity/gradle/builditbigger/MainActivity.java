@@ -46,6 +46,6 @@ public class MainActivity extends ActionBarActivity {
         Toast.makeText(this, R.string.querying_joke_server, Toast.LENGTH_LONG).show();
 
         //GCE async task
-        new JokeRetrieverAsyncTask().execute(this);
+        new JokeRetrieverAsyncTask(Boolean.FALSE).execute(this);
     }
 }

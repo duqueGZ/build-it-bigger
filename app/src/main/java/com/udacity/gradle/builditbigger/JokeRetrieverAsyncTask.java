@@ -10,6 +10,8 @@ import com.example.android.udacity.jokedisplay.JokeDisplayActivity;
 import com.example.udacity.backend.jokeServerApi.JokeServerApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
+import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
+import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import java.io.IOException;
 
@@ -20,13 +22,31 @@ public class JokeRetrieverAsyncTask extends AsyncTask<Context, Void, String> {
     private static JokeServerApi jokeServerApiService = null;
     private Context context;
     private JokeRetrieverAsyncTaskListener mListener = null;
+    private boolean localServer = Boolean.FALSE;
+
+    public JokeRetrieverAsyncTask(boolean local) {
+        super();
+
+        localServer = local;
+    }
 
     @Override
     protected String doInBackground(Context... params) {
         if(jokeServerApiService == null) {  // Only do this once
             JokeServerApi.Builder builder = new JokeServerApi.Builder(AndroidHttp.newCompatibleTransport(),
-                    new AndroidJsonFactory(), null)
-                    .setRootUrl("https://my-joke-server.appspot.com/_ah/api/");
+                    new AndroidJsonFactory(), null);
+
+            if (localServer) {
+                builder = builder.setRootUrl("http://10.0.2.2:8080/_ah/api/") // 10.0.2.2 is localhost's IP address in Android emulator
+                        .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
+                            @Override
+                            public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
+                                abstractGoogleClientRequest.setDisableGZipContent(true);
+                            }
+                        });
+            } else {
+                builder = builder.setRootUrl("https://my-joke-server.appspot.com/_ah/api/");
+            }
 
             jokeServerApiService = builder.build();
         }

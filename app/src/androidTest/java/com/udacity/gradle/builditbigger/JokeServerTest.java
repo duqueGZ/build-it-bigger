@@ -28,7 +28,7 @@ public class JokeServerTest extends ApplicationTestCase<Application> {
 
     public void testJokeFromServer() throws InterruptedException {
 
-        final JokeRetrieverAsyncTask taskToTest = new JokeRetrieverAsyncTask();
+        final JokeRetrieverAsyncTask taskToTest = new JokeRetrieverAsyncTask(Boolean.TRUE);
         taskToTest.setListener(new JokeRetrieverAsyncTask.JokeRetrieverAsyncTaskListener() {
             @Override
             public void onComplete(String result) {
