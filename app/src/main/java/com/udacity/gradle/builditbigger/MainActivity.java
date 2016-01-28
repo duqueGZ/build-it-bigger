@@ -40,6 +40,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke() {
+        MainActivityFragment fragment = (MainActivityFragment) this.getSupportFragmentManager()
+                .findFragmentById(R.id.fragment);
+        fragment.setSpinnerStatus(View.VISIBLE);
         Toast.makeText(this, R.string.querying_joke_server, Toast.LENGTH_LONG).show();
 
         //GCE async task

@@ -3,6 +3,7 @@ package com.udacity.gradle.builditbigger;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.android.udacity.jokedisplay.JokeDisplayActivity;
@@ -44,6 +45,12 @@ public class JokeRetrieverAsyncTask extends AsyncTask<Context, Void, String> {
 
         if (this.mListener != null) {
             this.mListener.onComplete(result);
+        }
+        if (context instanceof MainActivity) {
+            MainActivityFragment fragment =
+                    (MainActivityFragment) ((MainActivity) context).getSupportFragmentManager()
+                            .findFragmentById(R.id.fragment);
+            fragment.setSpinnerStatus(View.GONE);
         }
         Toast.makeText(context, R.string.joke_server_answer_received, Toast.LENGTH_SHORT).show();
 

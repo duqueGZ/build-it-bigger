@@ -6,11 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
+
+    private ProgressBar mSpinner;
 
     public MainActivityFragment() {
     }
@@ -23,7 +26,14 @@ public class MainActivityFragment extends Fragment {
         Button tellJokeBtn = (Button) root.findViewById(R.id.tellJokeBtn);
         tellJokeBtn.setOnClickListener(new TellJokeOnClickListener());
 
+        mSpinner=(ProgressBar) root.findViewById(R.id.progressBar);
+        setSpinnerStatus(View.GONE);
+
         return root;
+    }
+
+    public void setSpinnerStatus(int status) {
+        mSpinner.setVisibility(status);
     }
 
     private class TellJokeOnClickListener implements View.OnClickListener {

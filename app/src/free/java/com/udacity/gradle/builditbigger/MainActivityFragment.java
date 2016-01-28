@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
@@ -25,6 +26,7 @@ public class MainActivityFragment extends Fragment {
 
 
     private InterstitialAd mInterstitial;
+    private ProgressBar mSpinner;
 
     public MainActivityFragment() {
     }
@@ -64,6 +66,9 @@ public class MainActivityFragment extends Fragment {
         Button tellJokeBtn = (Button) root.findViewById(R.id.tellJokeBtn);
         tellJokeBtn.setOnClickListener(new TellJokeOnClickListener());
 
+        mSpinner=(ProgressBar) root.findViewById(R.id.progressBar);
+        setSpinnerStatus(View.GONE);
+
         AdView mAdView = (AdView) root.findViewById(R.id.adView);
         // Create an ad request. Check logcat output for the hashed device ID to
         // get test ads on a physical device. e.g.
@@ -72,7 +77,12 @@ public class MainActivityFragment extends Fragment {
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+
         return root;
+    }
+
+    public void setSpinnerStatus(int status) {
+        mSpinner.setVisibility(status);
     }
 
     private class TellJokeOnClickListener implements View.OnClickListener {
