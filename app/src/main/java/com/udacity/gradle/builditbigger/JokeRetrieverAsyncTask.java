@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.android.udacity.jokedisplay.JokeDisplayActivity;
 import com.example.udacity.backend.jokeServerApi.JokeServerApi;
@@ -72,7 +71,6 @@ public class JokeRetrieverAsyncTask extends AsyncTask<Context, Void, String> {
                             .findFragmentById(R.id.fragment);
             fragment.setSpinnerStatus(View.GONE);
         }
-        Toast.makeText(context, R.string.joke_server_answer_received, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(context, JokeDisplayActivity.class);
         intent.putExtra(JokeDisplayActivity.JOKE_EXTRA_KEY, result);
