@@ -1,5 +1,6 @@
 package com.example.udacity.jokeprovider;
 
+import java.util.Locale;
 import java.util.Random;
 
 public class JokeProvider {
@@ -18,8 +19,16 @@ public class JokeProvider {
     }
 
     /* This method returns a random joke from the jokes set available in the library */
-    public String tellJoke() {
+    public String tellJoke(String locale) {
         int random = new Random().nextInt(Utility.NUM_JOKES);
-        return Utility.ENGLISH_JOKES.get(random);
+
+        String joke;
+        if (locale.equals(Utility.SPANISH_LOCALE)) {
+            joke = Utility.SPANISH_JOKES.get(random);
+        } else {
+            // By default, use english jokes
+            joke = Utility.ENGLISH_JOKES.get(random);
+        }
+        return joke;
     }
 }

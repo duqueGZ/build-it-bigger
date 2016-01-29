@@ -10,6 +10,9 @@ public final class Utility {
 
     public static final int NUM_JOKES = 10;
 
+    // Additional supported languages (besides the default, english)
+    public static final String SPANISH_LOCALE = "es";
+
     // Set of jokes in english available from jokeprovider library.
     // English is the language used by default
     public static final List<String> ENGLISH_JOKES = Arrays.asList(

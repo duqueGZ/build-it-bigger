@@ -13,6 +13,7 @@ import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import java.io.IOException;
+import java.util.Locale;
 
 /**
  * Created by davidduque on 23/01/16.
@@ -53,7 +54,8 @@ public class JokeRetrieverAsyncTask extends AsyncTask<Context, Void, String> {
         context = params[0];
 
         try {
-            return jokeServerApiService.tellJoke().execute().getData();
+            return jokeServerApiService.tellJoke(Locale.getDefault().getLanguage())
+                    .execute().getData();
         } catch (IOException e) {
             return e.getMessage();
         }
