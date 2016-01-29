@@ -15,8 +15,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:id="@+id/instructions_text_view"
-        />
+        android:id="@+id/instructions_text_view" />
 
     <Button
         android:id="@+id/tellJokeBtn"

@@ -1,4 +1,4 @@
 <resources>
     <string name="instructions">¡Pulsa el botón para recibir un fantástico chiste!</string>
-    <string name="button_text">Contar chiste</string>
+    <string name="button_text">Contar un chiste</string>
 </resources>

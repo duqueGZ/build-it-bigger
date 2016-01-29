@@ -37,10 +37,12 @@ public class JokeRetrieverAsyncTask extends AsyncTask<Context, Void, String> {
                     new AndroidJsonFactory(), null);
 
             if (localServer) {
-                builder = builder.setRootUrl("http://10.0.2.2:8080/_ah/api/") // 10.0.2.2 is localhost's IP address in Android emulator
+                // 10.0.2.2 is localhost's IP address in Android emulator
+                builder = builder.setRootUrl("http://10.0.2.2:8080/_ah/api/")
                         .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                             @Override
-                            public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
+                            public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest)
+                                    throws IOException {
                                 abstractGoogleClientRequest.setDisableGZipContent(true);
                             }
                         });
@@ -67,6 +69,7 @@ public class JokeRetrieverAsyncTask extends AsyncTask<Context, Void, String> {
         if (this.mListener != null) {
             this.mListener.onComplete(result);
         }
+
         if (context instanceof MainActivity) {
             MainActivityFragment fragment =
                     (MainActivityFragment) ((MainActivity) context).getSupportFragmentManager()

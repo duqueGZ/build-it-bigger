@@ -1,12 +1,8 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
-
-import com.example.android.udacity.jokedisplay.JokeDisplayActivity;
-import com.example.udacity.jokeprovider.JokeProvider;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -21,7 +17,7 @@ public class MainActivity extends ActionBarActivity {
                 .findFragmentById(R.id.fragment);
         fragment.setSpinnerStatus(View.VISIBLE);
 
-        //GCE async task
+        //GCE async task (we use a backend server deployed to App Engine)
         new JokeRetrieverAsyncTask(Boolean.FALSE).execute(this);
     }
 }

@@ -39,6 +39,7 @@ public final class Utility {
             "Estás más perdido que un pulpo en un garaje.",
             "Tienes más peligro que Espinete en una tienda de globos.",
             "¡No juegues con fuego! Y Fuego se quedó sin amigos.");
+
     private Utility() {
         // In order to avoid instantiation of this class
     }
