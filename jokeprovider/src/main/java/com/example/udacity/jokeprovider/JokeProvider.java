@@ -1,5 +1,7 @@
 package com.example.udacity.jokeprovider;
 
+import java.util.Random;
+
 public class JokeProvider {
 
     private static JokeProvider instance = null;
@@ -15,7 +17,9 @@ public class JokeProvider {
         return instance;
     }
 
+    /* This method returns a random joke from the jokes set available in the library */
     public String tellJoke() {
-        return "This is a funny joke";
+        int random = new Random().nextInt(Utility.NUM_JOKES);
+        return Utility.ENGLISH_JOKES.get(random);
     }
 }

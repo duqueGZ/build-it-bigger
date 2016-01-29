@@ -1,8 +1,12 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.android.udacity.jokedisplay.JokeDisplayActivity;
+import com.example.udacity.jokeprovider.JokeProvider;
 
 public class MainActivity extends ActionBarActivity {
 
