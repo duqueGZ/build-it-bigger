@@ -11,14 +11,25 @@
     <TextView android:text="@string/instructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:id="@+id/instructions_text_view"
         />
 
     <Button
         android:id="@+id/tellJokeBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/instructions_text_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="120dp"
+        android:layout_marginStart="120dp"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp"
+        android:background="@drawable/button_custom"
         android:text="@string/button_text" />
 
     <ProgressBar
